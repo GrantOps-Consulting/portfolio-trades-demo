@@ -54,6 +54,7 @@ jobs:
           aws s3api put-bucket-tagging --bucket "$BUCKET" --tagging file:///tmp/bucket-tags.json
 
       - name: Purge Cloudflare cache
+        continue-on-error: true  # tolerated on first deploy before CLOUDFLARE_API_TOKEN secret is set; cache expires within hours regardless
         run: |
           RESPONSE=$(curl -s -X POST \
             "https://api.cloudflare.com/client/v4/zones/${{ vars.CLOUDFLARE_ZONE_ID }}/purge_cache" \
