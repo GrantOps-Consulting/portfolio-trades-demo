@@ -154,32 +154,49 @@ h2 { font-size: clamp(44px, 7.4vw, 116px); }
   margin: 0 auto;
 }
 
-/* ──────────── TOPBAR ──────────── */
-.topbar {
-  position: fixed; top: 0; left: 0; right: 0;
+/* ──────────── TOP NAV ──────────── */
+.top {
+  position: fixed; inset: 0 0 auto 0;
   z-index: 50;
   display: flex; justify-content: space-between; align-items: center;
-  padding: 18px var(--gutter);
-  background: rgba(14, 12, 9, 0.86);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-bottom: var(--rule-d);
-  color: var(--on-dark);
-  transition: background 0.4s ease, padding 0.4s ease;
+  padding: 20px var(--gutter);
+  mix-blend-mode: difference;
+  color: #fff;
 }
-.topbar.lit { background: rgba(14, 12, 9, 0.96); padding: 12px var(--gutter); }
-.topbar-id { display: flex; align-items: center; gap: 14px; transition: opacity 0.3s; }
-.topbar-id:hover { opacity: 0.78; }
+.top .brand {
+  font-family: var(--serif); font-weight: 700; font-size: 22px;
+  letter-spacing: -0.02em;
+  display: flex; align-items: center; gap: 14px;
+}
+.top .brand::before {
+  content: ''; width: 8px; height: 8px;
+  background: var(--amber); border-radius: 50%;
+  animation: topPulse 2.4s infinite;
+}
+@keyframes topPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(208, 128, 32, 0.6); }
+  50%      { box-shadow: 0 0 0 12px rgba(208, 128, 32, 0); }
+}
+.top nav {
+  display: flex; gap: 32px;
+  font-family: var(--mono); font-size: 11px;
+  letter-spacing: 0.2em; text-transform: uppercase;
+}
+.top nav a { position: relative; padding: 4px 0; }
+.top nav a::after {
+  content: ''; position: absolute; left: 0; bottom: 0;
+  height: 1px; width: 100%; background: #fff;
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 0.4s var(--ease);
+}
+.top nav a:hover::after { transform: scaleX(1); }
 
-/* The wordmark itself */
+/* Wordmark — used in footer */
 .wordmark {
   display: inline-flex; align-items: center; gap: 14px;
   color: var(--on-dark);
 }
-.wordmark .mark {
-  width: 36px; height: 36px;
-  flex-shrink: 0;
-}
+.wordmark .mark { width: 36px; height: 36px; flex-shrink: 0; }
 .wordmark .text { display: flex; flex-direction: column; line-height: 1; }
 .wordmark .text .name {
   font-family: var(--display); font-weight: 800;
@@ -188,23 +205,6 @@ h2 { font-size: clamp(44px, 7.4vw, 116px); }
 .wordmark .text .sub {
   font-family: var(--mono); font-size: 9px; letter-spacing: 0.32em; text-transform: uppercase;
   color: var(--amber); margin-top: 5px;
-}
-.topbar.lit .wordmark .mark { width: 30px; height: 30px; }
-.topbar.lit .wordmark .text .name { font-size: 18px; }
-
-.topbar-cta {
-  font-family: var(--mono); font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase;
-  color: var(--amber); border-bottom: 1px solid var(--amber);
-  padding-bottom: 3px;
-  transition: color 0.3s, border-color 0.3s, transform 0.3s;
-  white-space: nowrap;
-}
-.topbar-cta:hover { color: var(--amber-bright); border-color: var(--amber-bright); transform: translateY(-1px); }
-
-@media (max-width: 720px) {
-  .wordmark .text .name { font-size: 17px; letter-spacing: 0.05em; }
-  .wordmark .text .sub { font-size: 8px; letter-spacing: 0.28em; }
-  .topbar-cta { font-size: 11px; letter-spacing: 0.18em; }
 }
 
 /* ──────────── HERO ──────────── */
@@ -763,7 +763,6 @@ section { position: relative; z-index: 2; }
 
 /* ──────────── MOBILE NUDGES ──────────── */
 @media (max-width: 720px) {
-  .topbar { padding: 12px 18px; }
   .hero { padding: 100px 22px 40px; }
   .hero-headline { margin-top: 2vh; }
   .hero-strap { flex-direction: column; align-items: stretch; gap: 24px; }
@@ -798,24 +797,13 @@ section { position: relative; z-index: 2; }
   <div class="cursor-ring" aria-hidden="true"></div>
   <div class="cursor-dot" aria-hidden="true"></div>
 
-  <header class="topbar" id="topbar">
-    <a href="#top" class="topbar-id" aria-label="Drygate Plasterworks — home">
-      <span class="wordmark">
-        <svg class="mark" viewBox="0 0 48 48" fill="none" aria-hidden="true">
-          <!-- Heritage mason's mark: triangle (gable) over plumb-line, encircled -->
-          <circle cx="24" cy="24" r="22" stroke="#D08020" stroke-width="1.4"/>
-          <path d="M12 34 L24 12 L36 34" stroke="#f4ede0" stroke-width="1.6" stroke-linejoin="round"/>
-          <line x1="24" y1="12" x2="24" y2="38" stroke="#f4ede0" stroke-width="1.6"/>
-          <circle cx="24" cy="12" r="2" fill="#D08020"/>
-          <circle cx="24" cy="38" r="2" fill="#D08020"/>
-        </svg>
-        <span class="text">
-          <span class="name">Drygate</span>
-          <span class="sub">Plasterworks · Est. 1898</span>
-        </span>
-      </span>
-    </a>
-    <a href="#contact" class="topbar-cta" data-cursor="hover">Request a Survey →</a>
+  <header class="top">
+    <a href="#top" class="brand" aria-label="Drygate Plasterworks — home">Drygate</a>
+    <nav aria-label="Primary">
+      <a href="#work">Work</a>
+      <a href="#trust">Trust</a>
+      <a href="#contact">Contact</a>
+    </nav>
   </header>
 
   <section class="hero" id="top">
@@ -1281,7 +1269,7 @@ section { position: relative; z-index: 2; }
   </section>
 
   <!-- ─────────── TRUST STRIP ─────────── -->
-  <section class="trust">
+  <section class="trust" id="trust">
     <div class="trust-grid">
       <div class="trust-item reveal">
         <div class="num">127</div>
@@ -1392,21 +1380,6 @@ section { position: relative; z-index: 2; }
 
   <script>
     (function () {
-      // Topbar scroll state
-      var topbar = document.getElementById('topbar');
-      var ticking = false;
-      function onScroll() {
-        if (!ticking) {
-          window.requestAnimationFrame(function () {
-            if (window.scrollY > 24) topbar.classList.add('lit');
-            else topbar.classList.remove('lit');
-            ticking = false;
-          });
-          ticking = true;
-        }
-      }
-      window.addEventListener('scroll', onScroll, { passive: true });
-
       // Reveal-on-scroll
       var reveals = document.querySelectorAll('.reveal');
       if ('IntersectionObserver' in window) {
