@@ -73,7 +73,8 @@ a{color:inherit;text-decoration:none}
 
 /* HERO — full bleed photo + layered type + simulated trowel */
 .hero{position:relative;height:78svh;min-height:560px;max-height:820px;overflow:hidden;background:#0a0907}
-.hero .bg{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1920&q=80');background-size:cover;background-position:center;filter:grayscale(.15) contrast(1.05);transform:scale(1.08);animation:slow-zoom 18s ease-out infinite alternate}
+.hero .bg{position:absolute;inset:0;filter:grayscale(.15) contrast(1.05);transform:scale(1.08);animation:slow-zoom 18s ease-out infinite alternate}
+.hero .bg img,.svc .img img{width:100%;height:100%;object-fit:cover;object-position:center}
 @keyframes slow-zoom{to{transform:scale(1.16)}}
 .hero::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.55) 0%,rgba(0,0,0,.2) 35%,rgba(0,0,0,.1) 60%,rgba(10,9,7,.85) 100%);z-index:1}
 .hero::after{content:'';position:absolute;inset:0;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='200' height='200'><filter id='n'><feTurbulence baseFrequency='0.85' numOctaves='2'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.16 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");mix-blend-mode:overlay;z-index:2;pointer-events:none}
@@ -130,7 +131,7 @@ a{color:inherit;text-decoration:none}
 .services{padding:0 var(--gutter) clamp(80px,12vh,160px);display:grid;grid-template-columns:repeat(12,1fr);gap:clamp(20px,3vw,40px) clamp(16px,2vw,28px);grid-auto-rows:minmax(320px,auto)}
 .svc{position:relative;overflow:hidden;background:var(--char-2);color:#f5ecd9;display:flex;flex-direction:column;justify-content:flex-end;padding:32px;min-height:480px;transition:transform .6s var(--ease)}
 .svc:hover{transform:translateY(-6px)}
-.svc .img{position:absolute;inset:0;background-size:cover;background-position:center;transform:scale(1.05);transition:transform 1.4s var(--ease);filter:grayscale(.1)}
+.svc .img{position:absolute;inset:0;transform:scale(1.05);transition:transform 1.4s var(--ease);filter:grayscale(.1)}
 .svc:hover .img{transform:scale(1.12)}
 .svc::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.05) 0%,rgba(0,0,0,.4) 50%,rgba(10,9,7,.92) 100%);pointer-events:none}
 .svc-content{position:relative;z-index:1}
@@ -248,7 +249,7 @@ a{color:inherit;text-decoration:none}
 </header>
 
 <section class="hero" id="top">
-  <div class="bg"></div>
+  <div class="bg"><img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1920&q=80" srcset="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1080&q=80 1080w, https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1280&q=80 1280w, https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1600&q=80 1600w, https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1920&q=80 1920w" sizes="max(100vw, 1.78 * clamp(560px, 78svh, 820px))" width="1920" height="1080" alt="" fetchpriority="high" decoding="async"></div>
   <div class="trowel"><span class="stroke"></span><span class="stroke"></span><span class="stroke"></span></div>
   <div class="hero-content">
     <div class="hero-eyebrow"><span class="l"></span>Glasgow · Heritage Plastering · Est. 1898</div>
@@ -288,7 +289,7 @@ a{color:inherit;text-decoration:none}
 
 <section class="services" id="work">
   <article class="svc s1 reveal">
-    <div class="img" style="background-image:url('https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?w=1400&q=80')"></div>
+    <div class="img"><img src="https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?w=1400&q=80" srcset="https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?w=400&q=80 400w, https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?w=600&q=80 600w, https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?w=828&q=80 828w, https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?w=1080&q=80 1080w, https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?w=1280&q=80 1280w, https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?w=1400&q=80 1400w" sizes="(max-width: 900px) calc(100vw - 2 * clamp(20px, 4vw, 72px)), calc((700vw - 14 * clamp(20px, 4vw, 72px) - 5 * clamp(16px, 2vw, 28px)) / 12)" width="1400" height="2100" alt="" loading="lazy" decoding="async"></div>
     <div class="svc-content">
       <div class="num">01 — Lime Plaster</div>
       <h3>Hot-mixed,<br><span class="it">hand-troweled</span></h3>
@@ -297,7 +298,7 @@ a{color:inherit;text-decoration:none}
     </div>
   </article>
   <article class="svc s2 reveal d1">
-    <div class="img" style="background-image:url('https://images.unsplash.com/photo-1604147495798-57beb5d6af73?w=1200&q=80')"></div>
+    <div class="img"><img src="https://images.unsplash.com/photo-1604147495798-57beb5d6af73?w=1200&q=80" srcset="https://images.unsplash.com/photo-1604147495798-57beb5d6af73?w=828&q=80 828w, https://images.unsplash.com/photo-1604147495798-57beb5d6af73?w=1080&q=80 1080w, https://images.unsplash.com/photo-1604147495798-57beb5d6af73?w=1200&q=80 1200w" sizes="(max-width: 900px) max(630px, 100vw - 2 * clamp(20px, 4vw, 72px)), max(840px, (500vw - 10 * clamp(20px, 4vw, 72px) - 7 * clamp(16px, 2vw, 28px)) / 12)" width="1200" height="800" alt="" loading="lazy" decoding="async"></div>
     <div class="svc-content">
       <div class="num">02 — Cornice &amp; Roses</div>
       <h3><span class="it">120+</span> period profiles</h3>
@@ -306,7 +307,7 @@ a{color:inherit;text-decoration:none}
     </div>
   </article>
   <article class="svc s3 reveal">
-    <div class="img" style="background-image:url('https://images.unsplash.com/photo-1591389703635-e15a07b842d7?w=1000&q=80')"></div>
+    <div class="img"><img src="https://images.unsplash.com/photo-1591389703635-e15a07b842d7?w=1000&q=80" srcset="https://images.unsplash.com/photo-1591389703635-e15a07b842d7?w=828&q=80 828w, https://images.unsplash.com/photo-1591389703635-e15a07b842d7?w=1000&q=80 1000w" sizes="(max-width: 900px) max(748px, 100vw - 2 * clamp(20px, 4vw, 72px)), max(926px, (100vw - 2 * clamp(20px, 4vw, 72px) - 2 * clamp(16px, 2vw, 28px)) / 3)" width="1000" height="562" alt="" loading="lazy" decoding="async"></div>
     <div class="svc-content">
       <div class="num">03 — Lath Repair</div>
       <h3>Open the wall.<br><span class="it">Find the cause.</span></h3>
@@ -315,7 +316,7 @@ a{color:inherit;text-decoration:none}
     </div>
   </article>
   <article class="svc s4 reveal d1">
-    <div class="img" style="background-image:url('https://images.unsplash.com/photo-1600573472556-e636c2acda88?w=1600&q=80')"></div>
+    <div class="img"><img src="https://images.unsplash.com/photo-1600573472556-e636c2acda88?w=1600&q=80" srcset="https://images.unsplash.com/photo-1600573472556-e636c2acda88?w=400&q=80 400w, https://images.unsplash.com/photo-1600573472556-e636c2acda88?w=600&q=80 600w, https://images.unsplash.com/photo-1600573472556-e636c2acda88?w=828&q=80 828w, https://images.unsplash.com/photo-1600573472556-e636c2acda88?w=1080&q=80 1080w, https://images.unsplash.com/photo-1600573472556-e636c2acda88?w=1280&q=80 1280w, https://images.unsplash.com/photo-1600573472556-e636c2acda88?w=1600&q=80 1600w" sizes="(max-width: 900px) calc(100vw - 2 * clamp(20px, 4vw, 72px)), calc((200vw - 4 * clamp(20px, 4vw, 72px) - clamp(16px, 2vw, 28px)) / 3)" width="1600" height="2400" alt="" loading="lazy" decoding="async"></div>
     <div class="svc-content">
       <div class="num">04 — Conservation</div>
       <h3>Listed work,<br>signed off <span class="it">by HES.</span></h3>
@@ -342,7 +343,7 @@ a{color:inherit;text-decoration:none}
   </div>
   <div class="proj-list">
     <article class="proj reveal">
-      <div class="img-wrap"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1400&q=80" alt=""></div>
+      <div class="img-wrap"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1400&q=80" srcset="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=400&q=80 400w, https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=600&q=80 600w, https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=828&q=80 828w, https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1080&q=80 1080w, https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1280&q=80 1280w, https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1400&q=80 1400w" sizes="(max-width: 720px) calc(1.125 * (100vw - 2 * clamp(20px, 4vw, 72px))), calc(1.125 * (50vw - clamp(20px, 4vw, 72px) - 20px))" width="1400" height="933" alt="" loading="lazy" decoding="async"></div>
       <div class="proj-meta">
         <span class="proj-num">P/01 · 2025</span>
         <h3>Hyndland <span class="it">drawing room</span></h3>
@@ -351,7 +352,7 @@ a{color:inherit;text-decoration:none}
       </div>
     </article>
     <article class="proj reveal d1">
-      <div class="img-wrap"><img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=1400&q=80" alt=""></div>
+      <div class="img-wrap"><img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=1400&q=80" srcset="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=400&q=80 400w, https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=600&q=80 600w, https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=828&q=80 828w, https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=1080&q=80 1080w, https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=1280&q=80 1280w, https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=1400&q=80 1400w" sizes="(max-width: 720px) calc(1.125 * (100vw - 2 * clamp(20px, 4vw, 72px))), calc(1.125 * (50vw - clamp(20px, 4vw, 72px) - 20px))" width="1400" height="933" alt="" loading="lazy" decoding="async"></div>
       <div class="proj-meta">
         <span class="proj-num">P/02 · 2024</span>
         <h3>Govanhill <span class="it">tenement close</span></h3>
@@ -360,7 +361,7 @@ a{color:inherit;text-decoration:none}
       </div>
     </article>
     <article class="proj reveal d2">
-      <div class="img-wrap"><img src="https://images.unsplash.com/photo-1567016432779-094069958ea5?w=1400&q=80" alt=""></div>
+      <div class="img-wrap"><img src="https://images.unsplash.com/photo-1567016432779-094069958ea5?w=1400&q=80" srcset="https://images.unsplash.com/photo-1567016432779-094069958ea5?w=400&q=80 400w, https://images.unsplash.com/photo-1567016432779-094069958ea5?w=600&q=80 600w, https://images.unsplash.com/photo-1567016432779-094069958ea5?w=828&q=80 828w, https://images.unsplash.com/photo-1567016432779-094069958ea5?w=1080&q=80 1080w, https://images.unsplash.com/photo-1567016432779-094069958ea5?w=1280&q=80 1280w, https://images.unsplash.com/photo-1567016432779-094069958ea5?w=1400&q=80 1400w" sizes="(max-width: 720px) calc(100vw - 2 * clamp(20px, 4vw, 72px)), calc(50vw - clamp(20px, 4vw, 72px) - 20px)" width="1400" height="1400" alt="" loading="lazy" decoding="async"></div>
       <div class="proj-meta">
         <span class="proj-num">P/03 · 2024</span>
         <h3>Pollokshields <span class="it">parlour</span></h3>
